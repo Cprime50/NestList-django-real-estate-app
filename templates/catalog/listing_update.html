@@ -1,0 +1,7 @@
+<p>Update the listing</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>submit</button>
+    
+</form>

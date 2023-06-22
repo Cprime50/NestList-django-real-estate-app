@@ -1,0 +1,77 @@
+{% load static  %}
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icon-element@1.0.0/bootstrap-icon-element.min.js"></script>
+    <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+
+    <title>{% block title %}{% endblock %} | NestList</title>
+       
+        {% block meta %}
+        {% endblock %}
+</head>
+<body class="d-flex flex-column">
+    <nav class="navbar navbar-expand-lg  sticky-top navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">NestList</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Listing options
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Create listing</a></li>
+                  <li><a class="dropdown-item" href="#">Update listing</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Delete listing</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><button class="btn btn-success" >Log in</button></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}"><button class="btn btn-primary" >Sign up</button></a>
+            </li>
+             </ul>
+            
+            
+          </div>
+        </div>
+      </nav>
+
+            <!-- every other content will be displayed section of the post-->
+            {% block content %}
+            {% endblock %}
+        
+
+        
+          <footer class="footer mt-auto py-3 bg-dark">
+            <div class="container-fluid text-center">
+              <span class="text-muted">&copy; 2023 NestList</span>
+            </div>
+          </footer>
+</body>
+</html>

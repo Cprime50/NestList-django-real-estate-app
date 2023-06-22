@@ -1,0 +1,14 @@
+{% for list in lists %}
+<ul>
+        <p>{{ list.title }}</p>
+        <p>Price: {{ list.price}}</p>
+    <p>Number of bedrooms: {{ list.num_bedrooms }}</p>
+    <p>Number of sittingrooms: {{ list.num_sittingrooms }}</p>
+    <p>Number of kitchens: {{ list.num_kitchens }}</p>
+    <p>Square Feet: {{ list.square_feet }}</p>
+    <p>State: {{ list.state }}</p>
+    <p>City: {{ list.city }}</p>
+    <p>Address: {{ list.address }}</p>
+    <hr>
+</ul>
+{% endfor %}

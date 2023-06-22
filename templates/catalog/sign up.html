@@ -1,0 +1,62 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %} | Sign Up{% endblock %}
+
+{% block content %}
+
+
+<section id="content" class="bg-light body">
+<div class="container-fluid text-center">
+    <h2 class="mb-6">Sign up</h2>
+
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        
+
+        <div class="mb-3 ">
+            <label for="exampleInputEmail1" class="form-label">Email address</label><br>
+            {{ form.email }}
+            
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+
+        <div class="mb-3 ">
+            <label for="Username" class="form-label">Username</label><br>
+            {{ form.username }}
+           
+            <div class="form-text">Make sure to use something unique</div><br>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label><br>
+            {{ form.password1 }}
+        </div>
+
+        <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Repeat password</label><br>
+                {{ form.password2 }}
+        </div>
+
+        <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" value="{{ form.accept_privacy }}">
+                <label class="form-check-label" for="exampleCheck1">You have read and agree to our privacy and terms</label>
+        </div>
+
+        {% if form.errors or form.non_field_errors %}   <!--if django spots any error in the form-->
+        <div class="mb-3 p-5 bg-red-100">
+            {% for field in form %}
+                {{ field.errors }}
+            {% endfor %}
+
+            {{ form.non_field_errors }} <!--django checking for errors in log-in form-->
+        </div>
+        {% endif %}
+        
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</section>
+
+{% endblock %}
