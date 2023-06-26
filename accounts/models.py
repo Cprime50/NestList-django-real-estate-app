@@ -47,7 +47,7 @@ class Account(AbstractBaseUser):
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=100, unique=True)
-    phone_number = models.CharField(max_length=50, null=True, unique=True)
+    phone_number = models.CharField(max_length=50, unique=True)
 
     date_joined = models.DateTimeField(auto_now_add= True)
     last_login  = models.DateTimeField(auto_now_add=True)
@@ -57,7 +57,7 @@ class Account(AbstractBaseUser):
     is_superadmin = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'phone_number']
     
     objects= MyAccountManager()
 

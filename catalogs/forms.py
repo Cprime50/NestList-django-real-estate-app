@@ -1,12 +1,12 @@
-from django.forms import ModelForm, Form
+from django.forms import ModelForm
 from .models import Listing
-from django.contrib.auth.forms import UserCreationForm
-from .models import Account
+
 
 class ListingForm(ModelForm):           #This form allows users tio insert data into our Listing Model
     class Meta:                         #Meta here is used to inherit our Listing class from models.py
         model = Listing
         fields = [
+            'category',
             'title',
             'price',
             'num_bedrooms',
@@ -17,9 +17,7 @@ class ListingForm(ModelForm):           #This form allows users tio insert data 
             'state', 
             'city',
             'address',
+            'image',
+            'status',
         ]
 
-class SignupForm(UserCreationForm):
-    class Meta:
-        model = Account                                                    #User is inbuilt model in django
-        fields = ('username', 'email', 'password', 'password1')

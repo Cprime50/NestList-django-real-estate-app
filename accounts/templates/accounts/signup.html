@@ -1,0 +1,90 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %} | Sign Up{% endblock %}
+
+{% block content %}
+
+
+
+<section class="h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+            {% include 'accounts/alert.html' %}
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb1 pb-1 pb-md-0 mb-md-1 px-md-1">Sign Up</h3>
+
+    
+    <form class="px-md-2" method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-6 mb-1">
+                    <label for="exampleFirstname" class="form-label">Firstname</label><br>
+                    {{ form.first_name }}
+                    <div class="form-text">Please enter your first name</div><br>
+            </div>
+            
+                <div class="col-md-6 mb-1">
+                        <label for="Username" class="form-label">Lastname</label><br>
+                        {{ form.last_name }}
+                        <div class="form-text">please enter your lastname</div><br>
+                </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-16 mb-1">
+                <label for="exampleInputEmail1" class="form-label">Email address</label><br>
+                {{ form.email }}
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Phone number</label><br>
+                    {{ form.phone_number }}
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label for="Username" class="form-label">Username</label><br>
+                {{ form.username }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <label for="exampleInputPassword1" class="form-label">Password</label><br>
+                {{ form.password }}
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label for="exampleInputPassword1" class="form-label">Repeat password</label><br>
+                {{ form.password1 }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">SignUp</button>
+        {% if form.errors or form.non_field_errors %}   <!--if django spots any error in the form-->
+        <div class="mb-3 p-5 bg-red-100">
+            {% for field in form %}
+                {{ field.errors }}
+            {% endfor %}
+            {{ form.non_field_errors }} <!--django checking for errors in log-in form-->
+        </div>
+        {% endif %}
+            </form>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+{% endblock %}

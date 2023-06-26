@@ -49,6 +49,7 @@ class Listing(models.Model):
     image = models.ImageField(upload_to= 'uploads/', null=True, blank=True)
     status = models.CharField(max_length=10, choices=CHOICES_STATUS, default=ACTIVE)
     tags = TaggableManager(blank=True)
+    
 
     class Meta:
         ordering = ('-created_at',)

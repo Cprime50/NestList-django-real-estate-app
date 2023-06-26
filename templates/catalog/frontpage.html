@@ -6,46 +6,39 @@
 {% block content %}
 
       <!-- Hero -->
-      <div class="p-5 bg-image" style="
-      background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp'); 
-      height: 400px;
-    ">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-
-          <form class="d-flex">
-            <input class="form-control form-control-lg me-2" type="search" placeholder="Search for a place" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-         
+      <div class="p-5 bg-image" style="position: relative; height: 400px; background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');">
+        <div class="mask" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.6);">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+            <form class="d-flex">
+              <input class="form-control form-control-lg me-2" type="search" placeholder="Search for a place" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
   <!-- Hero -->
 
-  <section id="content" class="bg-light">
-    <div class="container my-5"></div>
-    
-      <div class=" text-center">
+  <section class="h-custom" style="background-color: #8fc4b7;">
+    <div class="container text-center  my-5">
         <h2>New Listings</h2>
         <p class="lead text-muted">Explore a variety of houses</p>
       </div>
-
+              
          
-            <div class="row my-5 align-items-center justify-content-center g-3">
-              {% for list in lists %}
-                <div class="col-8 col-lg-4 col-sm-3 col-xl-3">
-                <div class="card"style="width: 18rem;">
+      <div class="row g-3">
+            {% for list in lists %} 
+            <div class="col-12 col-md-6 col-lg-4"> 
+              <div class="card">
                   {% if list.image %}
              <img class="card-img-top" src="{{ list.image.url }}">
                   {% endif %}
-                <div class="card-header">
-                    Price: {{ list.price }} Naira
-                </div>
-                <div class="card-body py-4">
-                <h5 class="card-title">{{ list.title }}</h5>
+                  <div class="card-body"> 
+                    <div class="clearfix mb-3">
+                      <span class="float-end price-hp">Price: {{ list.price }} Naira</span>
+                      <span class="float-start badge rounded-pill bg-primary">{{ list.title }}</span>
+                      <div class="text-center my-4"> <a href="#" class="btn btn-warning">Check offer</a> 
                 <a href="#"><p><i class="fa fa-user" aria-hidden="true"></i> {{ list.created_by }}</p></a>
                 <p>{{ list.created_at |timesince }} ago</p>
                 <ul>
@@ -54,13 +47,14 @@
                     <li><p><i class="fa fa-bath" aria-hidden="true"></i>{{ list.num_bathrooms }}bathrooms</li></p>
                 </ul>
                 </div>
-                
+                </div>
                 </div>
                 
             </div>
             {% endfor %}
         </div>
-        
-    </div>
+            </div>
+          </div>
+        </div>
   </section>
 {% endblock %}
